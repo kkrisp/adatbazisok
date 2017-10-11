@@ -31,3 +31,17 @@ SELECT COUNT(*),
     COUNT(DISTINCT foglalkozas)
     FROM dolgozo
     WHERE 1<>2;
+
+SELECT oazon, ROUND(AVG(fizetes), 0) atlagfiz,
+    MIN(fizetes), COUNT(*) ossz,
+    COUNT(ALL foglalkozas) ossz2,
+    COUNT(DISTINCT foglalkozas) kul
+    FROM dolgozo
+    GROUP BY oazon
+    --HAVING AVG(fizetes)>2000;
+    HAVING COUNT(*)>= 3;
+    
+-- az osztalyonkenti legmagasabb atlagfizetes
+SELECT MAX(AVG(fizetes)) max_atalagfiz
+    FROM dolgozo
+    GROUP BY oazon;
