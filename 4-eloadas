@@ -1,0 +1,33 @@
+--http://docs.oracle.com/cd/E11882_01/appdev.112/e25519/create_type.htm#LNPLS01375
+SELECT dkod, initcap(dnev) nev,
+    trunc((sysdate - belepes)/7,0) hete,
+    round(MONTHS_BETWEEN(sysdate, belepes), 0) honapja
+    FROM dolgozo
+    WHERE belepes > to_date('1982.01.01.', 'YYYY.MM.DD.');
+
+-- adjuk meg hany naposak vagyunk
+SELECT FLOOR(
+        trunc(SYSDATE-
+        to_date('1992.12.23.', 'YYYY.MM.DD.')
+                    ) ) napos,
+        FLOOR(
+        trunc(SYSDATE-
+        to_date('1992.12.23.', 'YYYY.MM.DD.')
+                    )/7 ) hetes,
+        FLOOR(
+        trunc(SYSDATE-
+        to_date('1992.12.23.', 'YYYY.MM.DD.')
+                    )/365 ) eves
+    FROM DUAL;
+    --ketsoros ize, amikor csak ki akarunk iratni valamit
+    --WHERE belepes > to_date('1982.01.01.', 'YYYY.MM.DD.');
+
+--      AGGREGALO FUGGVENYEK           --
+
+SELECT MIN(fizetes) from dolgozo;
+    --egy skalart ad vissza
+SELECT COUNT(*),
+    COUNT(ALL foglalkozas),
+    COUNT(DISTINCT foglalkozas)
+    FROM dolgozo
+    WHERE 1<>2;
