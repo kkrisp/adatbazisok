@@ -1,0 +1,2 @@
+# adatbazisok
+Adatbaziskezeles peldak, kodok
